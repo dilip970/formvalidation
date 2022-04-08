@@ -1,0 +1,10 @@
+Git Commands
+==========
+1. Open Project Folder in Command Line then Follow Below Steps
+2. git init
+3. git remote add origin (URL--Copy and paste from Git)
+4. git add .
+5. git commit -m "first commit"
+6. git push -u origin master
+
+background-image: linear-gradient(rgba(131,61,60,0.7), rgba(131,61,60,0.9)),url(../images/header.jpg);

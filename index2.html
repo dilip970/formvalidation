@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Form Validation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+  <h2>Form Validation</h2>
+  <form id="loginForm" onsubmit="return false" >
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" name="login_email" id="login_email" placeholder="Enter email" >
+      <small id="e_error" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" name="login_pass" id="login_pass" placeholder="Password" >
+      <small id="p_error" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1"> Confirm Password</label>
+        <input type="password" class="form-control" name="login_con_pass" id="login_con_pass" placeholder="Confirm Password" >
+        <small id="cp_error" class="form-text text-muted"></small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1"> City</label>
+        <select name="" class="form-control" id="" onchange="sample(this.value)">
+          <option value="0">select city</option>
+          <option value="show">show</option>
+          <option value="hide">hide</option>
+        </select>
+      </div>
+      <input type="password" class="form-control" name="cityshow" id="cityshow" style="display: none;" placeholder="enter city name" >
+      
+
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+<script>
+    $("#loginForm").on("submit", function() {
+      var email = $("#login_email");
+      var pass = $("#login_pass");
+      var conpass = $("#login_con_pass");
+
+      if (email.val() == "") {
+        email.addClass("border-danger");
+        $("#e_error").html("<p class='text-danger'>Enter valid email..</p>");
+        return false;
+      } else {
+        email.removeClass("border-danger");
+        $("#e_error").html("");
+        return true;
+      }
+      if (pass.val() == "") {
+        pass.addClass("border-danger");
+        $("#p_error").html("<span class='text-danger'>Enter password..</span>");
+        return false;
+      } else {
+        pass.removeClass("border-danger");
+        $("#p_error").html("");
+        return true;
+      }
+      if(pass.val()!=conpass.val()){
+        conpass.addClass("border-danger");
+        $("#cp_error").html("<span class='text-danger'> password confirm password not matching</span>");
+        return false;
+      }
+      else{
+          conpass.removeClass("border-danger");
+          $("#cp_error").html("");
+          return true;
+          alert("Your Registration is successfully completed")
+      }
+    })
+</script>
+
+<script>
+  function sample(value){
+    if(value == "show"){
+      $("#cityshow").css("display","block")
+    }
+    else{
+      $("#cityshow").css("display","none")
+    }
+    
+  }
+</script>

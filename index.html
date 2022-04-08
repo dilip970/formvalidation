@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Form Validation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+  <h2>Form Validation</h2>
+  <form action="/action_page.php" name="form">
+    <div class="form-group">
+      <label for="First Name">First Name:</label>
+      <input type="text" class="form-control"  placeholder="Enter firstname" name="firstname" id="firstname" >
+    </div>
+
+    <div class="form-group">
+      <label for="last name">Last Name:</label>
+      <input type="text" class="form-control" id="lastname" placeholder="Enter lastname" name="lastname">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" onkeyup="checkPass(); return false;">
+      </div>
+      <div id="error-nwl"></div>
+      <div class="form-group">
+        <label for="password">Confirm Password:</label>
+        <input type="password" class="form-control" id="confirm_password" placeholder="Enter confirm password" name="confirm_password" onkeyup="checkPass(); return false;">
+      </div>
+    
+    <div class="form-group form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="remember"> Remember me
+      </label>
+    </div>
+    <button type="button" onclick="validation()" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+</div>
+</div>
+
+</body>
+</html>
+
+<script>
+    function validation(){
+        if($("#firstname").val() ==''){
+            alert("please fill the firstname")
+            return false;
+        }
+        if($("#lastname").val() ==""){
+            alert("please fill the lastname")
+            return false;
+        }
+        else{
+            $('form').submit();
+            alert("your profile added")
+        }
+    }
+</script>
+
+     
+<script>
+function checkPass()
+{
+    var password = document.getElementById('password');
+    var confirm_password = document.getElementById('confirm_password');
+    var message = document.getElementById('error-nwl');
+    var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+ 	
+    if(password.value.length > 5)
+    {
+        password.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        message.innerHTML = "character number ok!"
+    }
+    else
+    {
+        password.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = " you have to enter at least 6 digit!"
+        return;
+    }
+  
+    if(password.value == confirm_password.value)
+    {
+        confirm_password.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        message.innerHTML = "ok!"
+    }
+	else
+    {
+        confirm_password.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = " These passwords don't match"
+    }
+}  
+</script>
+
